@@ -4,13 +4,13 @@ import com.nickolamora.dashboardui.models.DashboardItem;
 import com.nickolamora.dashboardui.models.Rating;
 
 import com.nickolamora.dashboardui.models.Venue;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,10 +20,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/dashboard")
 public class DashboardUI {
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @RequestMapping("/{userId}")
     public List<DashboardItem> getDashboard(@PathVariable("userId") String userId) {
-
-        RestTemplate restTemplate = new RestTemplate();
 
         // get all rated venue IDs
         List<Rating> ratings = Arrays.asList(
