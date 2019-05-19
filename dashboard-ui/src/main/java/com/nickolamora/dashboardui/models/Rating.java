@@ -4,6 +4,10 @@ public class Rating {
     private String venueId;
     private int rating;
 
+    public Rating() {
+
+    }
+
     public Rating(String venueId, int rating) {
         this.venueId = venueId;
         this.rating = rating;
